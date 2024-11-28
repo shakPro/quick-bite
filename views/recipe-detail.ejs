@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Bite - <%= recipe.name %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="/" class="flex items-center py-4">
+                            <span class="font-bold text-2xl text-orange-500">Quick Bite</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="/" class="py-4 px-2 text-gray-500 font-semibold hover:text-orange-500 transition duration-300">Home</a>
+                        <a href="/breakfast" class="py-4 px-2 text-gray-500 font-semibold hover:text-orange-500 transition duration-300">Breakfast</a>
+                        <a href="/lunch" class="py-4 px-2 text-gray-500 font-semibold hover:text-orange-500 transition duration-300">Lunch</a>
+                        <a href="/dinner" class="py-4 px-2 text-gray-500 font-semibold hover:text-orange-500 transition duration-300">Dinner</a>
+                        <a href="/about" class="py-4 px-2 text-gray-500 font-semibold hover:text-orange-500 transition duration-300">About</a>
+                        <a href="/contact" class="py-4 px-2 text-gray-500 font-semibold hover:text-orange-500 transition duration-300">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Recipe Detail -->
+    <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="md:flex">
+                <div class="md:w-1/2">
+                    <img src="<%= recipe.image %>" alt="<%= recipe.name %>" class="w-full h-[600px] object-cover">
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <div class="mb-6">
+                        <span class="inline-block bg-orange-100 text-orange-500 px-3 py-1 rounded-full text-sm font-semibold capitalize"><%= recipe.category %></span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4"><%= recipe.name %></h1>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <span class="text-2xl font-bold text-orange-500"><%= recipe.price %></span>
+                        <div class="h-6 w-px bg-gray-300"></div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-gray-600">Prep: <%= recipe.prepTime %></span>
+                        </div>
+                        <div class="h-6 w-px bg-gray-300"></div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <span class="text-gray-600">Serves: <%= recipe.servings %></span>
+                        </div>
+                    </div>
+                    <div class="prose prose-lg max-w-none mb-8">
+                        <p class="text-gray-600 leading-relaxed"><%= recipe.fullDescription %></p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="/<%= recipe.category %>" class="inline-flex items-center justify-center px-6 py-3 border border-orange-500 text-orange-500 rounded-full font-semibold hover:bg-orange-50 transition duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back to <%= recipe.category.charAt(0).toUpperCase() + recipe.category.slice(1) %> Recipes
+                        </a>
+                        <button class="inline-flex items-center justify-center px-6 py-3 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 transition duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            Save Recipe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold text-orange-500">Quick Bite</h3>
+                    <p class="mt-2">Delicious recipes for every occasion</p>
+                </div>
+                <div class="flex space-x-12">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/" class="hover:text-orange-500">Home</a></li>
+                            <li><a href="/about" class="hover:text-orange-500">About</a></li>
+                            <li><a href="/contact" class="hover:text-orange-500">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/breakfast" class="hover:text-orange-500">Breakfast</a></li>
+                            <li><a href="/lunch" class="hover:text-orange-500">Lunch</a></li>
+                            <li><a href="/dinner" class="hover:text-orange-500">Dinner</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2024 Quick Bite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
