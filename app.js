@@ -139,6 +139,8 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-app.listen(port, () => {
-    console.log(`Quick Bite app listening at http://localhost:${port}`);
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
